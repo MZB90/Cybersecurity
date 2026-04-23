@@ -9,7 +9,7 @@ So after opening your terminal on your computer the command you type is:
 ```
 ssh bandit0@bandit.labs.overthewire.org -p 2220
 ```
-![[swappy-20260422-233855.png]]
+![](swappy-20260422-233855.png)
 and then the password `bandit0`. 
 ![[swappy-20260422-233932.png]]
 After being connected now we search for the key that will allows us to connect to level1. The password was located in a file in the home directory, the file was called 'readme' and to be able to read its content i used the `cat` command and found the password.
