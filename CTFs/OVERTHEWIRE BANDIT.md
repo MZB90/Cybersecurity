@@ -1,4 +1,5 @@
 **OVERTHEWIRE BANDIT**
+
 First let start wit defining what is "overthewire bandit" and what is its purpose. Overthewire bandit  is a free wargame for designed to teach Linux command line skills and cyber security concepts through interactive challenges. It help beginner to learn and get familiar with Linux command on the CLI or command line terminal. It consist of multiple levels through which the user have to first connect to the overthewire server and then look for specific keys hidden in the server, each of those keys allow him to pass to the next level otherwise he won't be able to go to the next level.
 
 # LEVEL0: 
