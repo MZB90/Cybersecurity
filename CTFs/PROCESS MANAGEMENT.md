@@ -2,7 +2,9 @@
 Process is usually represented by `ps`
 Processes are programs that are currently running. Each process is assigned a unique ID when it's created Process ID (PID). 
 To see your running processes use the `ps` command. 
-![[swappy-20260423-205756.png]]
+
+![](Pics/swappy-20260423-205756.png)
+
 On our screenshot above we can see the different process IDs of our two processes. 
 This output also shows a few key details:
 - **PID**: The unique Process ID.
@@ -13,13 +15,17 @@ This output also shows a few key details:
 
 EXPLORING `PS` WITH BSD-STYLE OPTIONS
 BSD-style: popular combination is `ps aux` 
-![[swappy-20260423-212940.png]]
+
+![](Pics/swappy-20260423-212940.png)
+
 this list all the current processes running on our device
 the `aux` means:
 - a : displays all processes for all users
 - u : provides a detailed, user oriented format
 - x : Includes processes not attached to any terminal. These often include system daemons that start at boot and show a `?` in the TTY column.
-![[swappy-20260423-213646.png]]
+  
+![](Pics/swappy-20260423-213646.png)
+
 as we can see the highlighted process is a daemon.
 
 Each for these can also be used separately together with the `ps` command. Example: `ps a`, `ps au`, `ps ax`, `ps x`, `ps u.
@@ -33,7 +39,8 @@ The `ps -ef` Linux command provides a full listing of all processes.
 
 TOP 
 is a command that allows you to monitor processes in real time
-![[swappy-20260423-215550.png]]
+
+![](Pics/swappy-20260423-215550.png)
 
 ## CONTROLLING TERMINAL
 When you inspect running processes, you'll notice a `TTY` field in the `ps` command's output. This field is important as it indicates the **controlling terminal** that executed the command. Understanding this concept is key to managing processes effectively.
@@ -49,7 +56,9 @@ Most processes are bound to a **controlling terminal**. This means the process'
 
 PROCESSES WITHOUT CONTROLLING TERMINAL
 Some processes, known as daemons, are designed to run in the background and manage system services. These processes often start when the system boots and stop only when it shuts down. The TTY doesn't control those processes running in the background so when you will want to see the information about processes for TTY if it's a daemon it will show this " ? "
-![[swappy-20260423-224005.png]]
+
+![](Pics/new.png)
+
 To prevent them from being accidentally terminated, daemons are not attached to a **controlling terminal**.
 
 ## PROCESS DETAILS
@@ -64,7 +73,8 @@ After forking, the child process can either continue running the same program as
 
 OBSERVING PARENT-CHILD RELATIONSHIP
 to be able to see the different relations between your processes you can use `ps l`
-![[swappy-20260423-225922.png]]
+
+![](Pics/swappy-20260423-225922.png)
 
 INIT PROCESS
 If every process is a child of another, there must be an original ancestor. This is the `init` process. When the system boots, the kernel creates `init` as the very first user-space process, assigning it a PID of 1. The `init` process is the ultimate parent of all other processes and runs with root privileges to manage the system. It cannot be terminated until the system shuts down and is responsible for spawning many of the services that keep the system running.
@@ -74,7 +84,8 @@ TERMINATION PROCESS
 A process typically terminates by calling the `_exit` system call.
 However, calling `_exit` doesn't immediately erase the process. The parent process must acknowledge its child's termination by using the `wait` system call.
 Another way to `linux kill child process` is by using signals, a topic we will explore in a later lesson.
-![[swappy-20260423-231222.png]]
+
+![](Pics/swappy-20260423-231222.png)
 
 ORPHAN PROCESSES
 Process which the parent process was terminated or terminate before the child process, that process is called orphan.
@@ -95,7 +106,9 @@ Primary command used to send signals to manage processes, it send various signal
 
 DEFAULT TERMINATION WITH KILL SIGTERM (-15)
 When you use the `kill` command with the PID it usually kills the process.
-![[swappy-20260423-231222 1.png]]
+
+![](Pics/swappy-20260423-231222.png)
+
 The `kill sigterm` signal (also known as `SIGTERM` or signal 15) requests that the process shut down cleanly. This gives the process a chance to save its progress and release resources properly. You can also explicitly use the signal number, making `kill -15 12445` equivalent to the command above. This addresses the common `kill -15 linux` query.
 
 FORCING TERMINATION WITH SIGKILL(-9)
@@ -127,15 +140,20 @@ A process is either running, waiting, or terminated.
 ## /PROC FILESYSTEM 
 In Linux, a core principle is that everything is treated as a file.This concept extends to running processes, whose information is dynamically stored in a special virtual filesystem known as `/proc`. The `/proc` filesystem is not a real filesystem on your hard drive; it's created in memory by the kernel. It provides a window into the kernel's internal data structures and the state of the system.
 To be able to access it we use the `ls /proc` command.
-![[swappy-20260424-004750.png]]
+
+![](Pics/swappy-20260424-004750.png)
+
 You will see many numbered directories. Each number corresponds to the Process ID (PID) of a currently running process. You'll also find other files like `cpuinfo` and `meminfo` that provide system hardware information.
 
 ACCESS SPECIFIC PROCESS INFORMATION
 Here you can use the `cat` command 
 Example: `cat /proc/12345/status`
-![[swappy-20260424-005228.png]]
+
+![](Pics/swappy-20260424-005228.png)
+
 And this was the output showing information about the process we specified using its PID
-![[swappy-20260424-005313.png]]
+
+![](Pics/swappy-20260424-005313.png)
 
 
 ## JOB CONTROL
@@ -144,16 +162,21 @@ In Linux, you often encounter commands that take a long time to complete. Instea
 RUNNING A COMMAND IN A BACKGROUND
 Here the `sleep` command followed by the PID and `&`
 Example: `sleep 1000 &`
-![[swappy-20260424-005940.png]]
+
+![](Pics/swappy-20260424-005940.png)
 
 LISTING BACKGROUND JOBS
 Here we use the `jobs` command
-![[swappy-20260424-010217.png]]
+
+![](Pics/swappy-20260424-010217.png)
+
 As we can see in this output after running our `jobs` command to view the jibs running in the background and we can see the process we have put to run in the background in our previous screenshot.
 
 MANAGING ACTIVE PROCESSES
 What if a command is already running in the foreground and you decide you need your terminal back? You don't need to stop it. First, suspend the running process by pressing `Ctrl-Z`. Then, use the `bg` command to send that suspended job to the background.
-![[swappy-20260424-010909.png]]
+
+![](Pics/swappy-20260424-010909.png)
+
 Now, the `sleep 1003` process is running as a background job, and you can verify this with the `jobs` command.
 
 BRINGING A JOB IN THE FOREGROUND
