@@ -14,6 +14,7 @@ This output also shows a few key details:
 - **CMD**: The command that started the process.
 
 EXPLORING `PS` WITH BSD-STYLE OPTIONS
+
 BSD-style: popular combination is `ps aux` 
 
 ![](Pics/swappy-20260423-212940.png)
@@ -31,6 +32,7 @@ as we can see the highlighted process is a daemon.
 Each for these can also be used separately together with the `ps` command. Example: `ps a`, `ps au`, `ps ax`, `ps x`, `ps u.
 
 SYSTEM V STYLE
+
 You will frequently see the `ps -ef` command** used by system administrators.
 Example : `ps -ef`
 The `ps -ef` Linux command provides a full listing of all processes.
@@ -38,6 +40,7 @@ The `ps -ef` Linux command provides a full listing of all processes.
 - **-f**: Displays a "full-format" listing, which includes details like UID, PPID (Parent Process ID), C (CPU utilization), and STIME (start time).
 
 TOP 
+
 is a command that allows you to monitor processes in real time
 
 ![](Pics/swappy-20260423-215550.png)
@@ -52,9 +55,11 @@ We have two main terminals terminal devices && pseudo-terminal devices.
 - pseudo-terminal device : is what you most commonly use. When you open a terminal application within your graphical desktop environment, you are using a PTS. These emulate a terminal within a window.
 
 ROLE OF THE CONTROLLING TERMINAL
+
 Most processes are bound to a **controlling terminal**. This means the process's life cycle is tied to the terminal session that started it. For example, if you run a program like `find` in your terminal window and then close that window, the `find` process will also be terminated.
 
 PROCESSES WITHOUT CONTROLLING TERMINAL
+
 Some processes, known as daemons, are designed to run in the background and manage system services. These processes often start when the system boots and stop only when it shuts down. The TTY doesn't control those processes running in the background so when you will want to see the information about processes for TTY if it's a daemon it will show this " ? "
 
 ![](Pics/new.png)
@@ -68,19 +73,23 @@ Example : when you run the `cat` command on your terminal.
 ## PROCESS CREATION
 
 FORK && EXEC MODEL
+
 The primary mechanism for **process creation in Linux** involves an existing process cloning itself using the `fork` system call. The `fork` call creates a nearly identical child process. This new child process receives its own unique Process ID (PID), while the original process becomes its parent, identified by a Parent Process ID (**PPID**).
 After forking, the child process can either continue running the same program as its parent or, more commonly, use the `execve` system call to load and run a new program. The `execve` call effectively replaces the process's memory space with that of the new program, allowing a different task to begin. This two-step "fork-exec" model is a cornerstone of how you **create a process in Linux**.
 
 OBSERVING PARENT-CHILD RELATIONSHIP
+
 to be able to see the different relations between your processes you can use `ps l`
 
 ![](Pics/swappy-20260423-225922.png)
 
 INIT PROCESS
+
 If every process is a child of another, there must be an original ancestor. This is the `init` process. When the system boots, the kernel creates `init` as the very first user-space process, assigning it a PID of 1. The `init` process is the ultimate parent of all other processes and runs with root privileges to manage the system. It cannot be terminated until the system shuts down and is responsible for spawning many of the services that keep the system running.
 
 ## PROCESS TERMINATION
 TERMINATION PROCESS
+
 A process typically terminates by calling the `_exit` system call.
 However, calling `_exit` doesn't immediately erase the process. The parent process must acknowledge its child's termination by using the `wait` system call.
 Another way to `linux kill child process` is by using signals, a topic we will explore in a later lesson.
@@ -88,9 +97,11 @@ Another way to `linux kill child process` is by using signals, a topic we will
 ![](Pics/swappy-20260423-231222.png)
 
 ORPHAN PROCESSES
+
 Process which the parent process was terminated or terminate before the child process, that process is called orphan.
 
 ZOMBIE PROCESSES
+
 When a child process terminate when the parent hasn't yet called `wait` this is when we call he child process a ZOMBIE process.
 Zombie processes are already dead, so they don't consume CPU time.
 
@@ -117,6 +128,7 @@ Example: `kill -9 84255`
 The `SIGKILL` signal (signal 9) terminates the process immediately, without giving it a chance to clean up. This is a key difference in the `kill vs terminate` debate; `SIGKILL` is an unconditional termination, while `SIGTERM` is a polite request.
 
 CHECKING PROCESS EXISTENCE WITH KILL -0
+
 A special use case is `linux kill -0`. This command doesn't actually send a signal but instead checks if a process with the specified PID exists and if you have permission to signal it.
 Example: `kill -0 84255`
 If the command executes successfully (exit code 0), the process exists. If it fails, the process does not exist or you lack permissions.
@@ -125,9 +137,11 @@ If the command executes successfully (exit code 0), the process exists. If it fa
 When you run multiple applications on your computer, it seems like they are all running simultaneously. In reality, the CPU is rapidly switching between them, giving each process a small amount of processing time.
 
 HOW CPU MANAGES PROCESSES
+
 Each process is allocated a small amount of CPU time called a "time slice". After its time slice, a process is paused, and the CPU moves to the next one. By default, the Linux kernel schedules processes in a round-robin fashion, ensuring every process gets a fair share of CPU time until it completes. The kernel's scheduler is highly efficient at managing these rapid switches.
 
 NICENESS IN LINUX
+
 While processes cannot directly control their CPU time, you can influence the kernel's scheduling decisions. This is done by adjusting the **linux niceness** value of a process. The term "niceness" refers to how "nice" a process is to other processes on the system.
 The **niceness of a process** is represented by a number ranging from -20 (highest priority) to 19 (lowest priority).
 - A high niceness value (e.g., 19) means the process is very "nice" and has a low priority, yielding CPU time to others.
@@ -146,6 +160,7 @@ To be able to access it we use the `ls /proc` command.
 You will see many numbered directories. Each number corresponds to the Process ID (PID) of a currently running process. You'll also find other files like `cpuinfo` and `meminfo` that provide system hardware information.
 
 ACCESS SPECIFIC PROCESS INFORMATION
+
 Here you can use the `cat` command 
 Example: `cat /proc/12345/status`
 
@@ -160,12 +175,14 @@ And this was the output showing information about the process we specified using
 In Linux, you often encounter commands that take a long time to complete. Instead of waiting and leaving your terminal unusable, you can use **Linux job control** to manage these tasks.
 
 RUNNING A COMMAND IN A BACKGROUND
+
 Here the `sleep` command followed by the PID and `&`
 Example: `sleep 1000 &`
 
 ![](Pics/swappy-20260424-005940.png)
 
 LISTING BACKGROUND JOBS
+
 Here we use the `jobs` command
 
 ![](Pics/swappy-20260424-010217.png)
@@ -173,6 +190,7 @@ Here we use the `jobs` command
 As we can see in this output after running our `jobs` command to view the jibs running in the background and we can see the process we have put to run in the background in our previous screenshot.
 
 MANAGING ACTIVE PROCESSES
+
 What if a command is already running in the foreground and you decide you need your terminal back? You don't need to stop it. First, suspend the running process by pressing `Ctrl-Z`. Then, use the `bg` command to send that suspended job to the background.
 
 ![](Pics/swappy-20260424-010909.png)
@@ -180,6 +198,7 @@ What if a command is already running in the foreground and you decide you need y
 Now, the `sleep 1003` process is running as a background job, and you can verify this with the `jobs` command.
 
 BRINGING A JOB IN THE FOREGROUND
+
 Here we use the `fg` command and you specify the jib ID
 Example: `fg %138848` 
 
