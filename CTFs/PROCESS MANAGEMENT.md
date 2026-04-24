@@ -116,6 +116,7 @@ The purpose of a signal is to serve as a primary method of inter-process communi
 Primary command used to send signals to manage processes, it send various signal not just terminate process.
 
 DEFAULT TERMINATION WITH KILL SIGTERM (-15)
+
 When you use the `kill` command with the PID it usually kills the process.
 
 ![](Pics/swappy-20260423-231222.png)
@@ -123,6 +124,7 @@ When you use the `kill` command with the PID it usually kills the process.
 The `kill sigterm` signal (also known as `SIGTERM` or signal 15) requests that the process shut down cleanly. This gives the process a chance to save its progress and release resources properly. You can also explicitly use the signal number, making `kill -15 12445` equivalent to the command above. This addresses the common `kill -15 linux` query.
 
 FORCING TERMINATION WITH SIGKILL(-9)
+
 Sometimes a process becomes unresponsive and won't react to a `SIGTERM` signal. In these cases, you can force it to stop using the `KILL` signal.
 Example: `kill -9 84255`
 The `SIGKILL` signal (signal 9) terminates the process immediately, without giving it a chance to clean up. This is a key difference in the `kill vs terminate` debate; `SIGKILL` is an unconditional termination, while `SIGTERM` is a polite request.
