@@ -1,6 +1,7 @@
 # LINUX CLI
 
 CLI (Command Line Interface)
+
 - First let define the shell: is a program that accepts typed command to pass it to the OS (Operating System) to be executed.
 GUI (Graphic User Interface)
 This is the graphic interface found in most our modern machines.
@@ -10,6 +11,7 @@ BASH (Bourne Again Shell) : it's a program that you use to give instructions to 
 we also ave cshell, zshell...
 
 SHELL PROMPT 
+
 is the place that you have when you open your terminal to write your commands.
 
 simple command in the terminal:
@@ -17,6 +19,7 @@ simple command in the terminal:
 ![](Pics/swappy-20260423-130230.png)
 
 SOME POPULAR AND SIMPLE COMMANDS
+
 - pwd: This command helps you find the directory you are currently in
   
 ![](Pics/swappy-20260423-130746.png)
@@ -39,6 +42,7 @@ These are some of the most common used Linux command
 # PERMISSIONS
 
 FILE PERMISSIONS
+
 First we have to know that in Linux everything is a file and a folder or directory is just a file that contain other files.
 To be able to see the permissions of files while in the CLI we are going to use the `ls` command with the option `l` to display their permissions`ls -l` then it will display some specific strings each with its meaning of the permissions that file has next to the.
 
@@ -51,6 +55,7 @@ As we can see on the screenshot above we have strings like `d, r, w, x, -` and e
 - " - ": no permission granted
 
 USER, GROUP PERMISSION
+
 - The first set of permissions is dedicated to the user
 - Then the second set of permission is dedicated to the group
 - And finally the last set of permissions is for all users on the system.
@@ -58,6 +63,7 @@ USER, GROUP PERMISSION
 ![](Pics/swappy-20260423-134537.png)
 
 MODIFYING PERMISSIONS
+
 When we need to modify permissions we use the `chmod` (Change mode) command, it has two main methods : symbolic and numerical mode.
 - Symbolic: use letters to represent users and permissions. 
 	- u: user/owner
@@ -78,19 +84,23 @@ When we need to modify permissions we use the `chmod` (Change mode) command, it 
 Warning: Recursively setting `777` permissions (`chmod -R 777 /some/directory`) is a common but dangerous practice that gives everyone full read, write, and execute access. Always apply the principle of least privilege, granting only the permissions that are strictly necessary.
 
 OWNERSHIP PERMISSIONS
+
 In a Linux system, every file and directory is assigned an owner and a group. You can modify both the user and group ownership of a file using specific **Linux commands**.
 
 CHANGING USER OWNERSHIP
+
 To transfer the ownership of a file to a different user, you use the `chown` (change owner) command. This is useful when a user's responsibilities change or when you need to assign file control to someone else. To be able to accomplish this you need to be a superuser or admin with the command `sudo`.
 Example: `sudo chown patty myfile`
 - changes the user owner of `myfile` to the user `patty`. 
 
 CHANGE GROUP OWNERSHIP
+
 Similar to change user ownership bu here we use the command `chgrp` (Change group). This allows all members of the new group to have access based on the group's **Linux permissions**.  Like change user ownership you will also need to be a superuser with the `sudo` command to be able to perform this
 Example: `sudo chgrp whales myfile`. 
 - sets the group ownership of `myfile` to the group `whales`.
 
 CHANGING BOTH USER AND GROUP
+
 The `chown` command allows you to change both the user and group ownership in a single step. By separating the user and group name with a colon, you can update both attributes simultaneously. 
 `sudo chown patty:whales myfile`
 This single command assigns user ownership to `patty` and group ownership to `whales` for the file `myfile`. This is the most common method for managing **Linux file ownership**.
@@ -111,6 +121,7 @@ When a file has the bit `s` in its permissions that means that it allows the use
 so whoever runs the `passwd` command is using it as root because of the `s` bit permission.
 
 MODIFYING SUID 
+
 We have two ways:
 - symbolic way:
 	Example : `sudo chmod u+s myfile`
@@ -135,11 +146,13 @@ Example: when we use this command `ls -l /usr/bin/wall`
 Here we can see that the permission bit is in the group permission set.
 
 MODIFYING SGID
+
 Here again we have the symbolic way and numerical way.
 Example: `sudo chmod g+s myfile` & `sudo chmod 2555 myfile` 
 The numerical representation for SGID is 2.
 
 STICKY BIT
+
 The sticky bit is a permission setting that can be applied to a directory. When a directory has the sticky bit set, files within that directory can only be deleted or renamed by the file's owner, the directory's owner, or the root user. This is particularly useful for shared directories where multiple users need to create and manage their own files without interfering with others. This concept is a key part of **Unix file permissions sticky bit** management.
 Here is an example:
 
@@ -148,10 +161,12 @@ Here is an example:
 The `t` indicates that the sticky bit is set.
 
 HOW TO SET THE STICKY BIT
+
 We can use the `chmod` command
 Example: `chmod +t my_shared_dir`
 
 PROCESS PERMISSIONS
+
 Let's segue into process permissions for a bit. Remember how I told you that when you run the `passwd` command with the SUID permission bit enabled, you will run the program as root? That is true. However, does that mean since you are temporarily root, you can modify other users' passwords? Nope, fortunately not!
 
 This is because of the many UIDs that Linux implements. There are three UIDs associated with every process:
