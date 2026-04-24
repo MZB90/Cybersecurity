@@ -4,7 +4,7 @@ They connect the output of one command directly into the output of another formi
 Here is the syntax : `command1 | command2 | command3 ...`
 Example: `ps aux | grep ssh`
 
-![[swappy-20260424-120128.png]]
+![](Pics/swappy-20260424-120128.png)
 
 Here we understand that the first command listed the different processes that were running then the second grepped the one with `ssh` 
 Pipelines are used in cyber security for log analysis, network inspections, threat hunting and also automation.
@@ -34,7 +34,7 @@ Redirection normally happens before privilege escalation
 
 Example: Append Logs
 
-![[swappy-20260424-122814.png]]
+![](Pics/swappy-20260424-122814.png)
  
 Shell redirection can be used in cyber security for secure logging, forensics, noise reductions and more.
 
@@ -42,15 +42,15 @@ SECURITY CONSIDERATIONS
 
 it Prevents accidental overwrite
 
-![[swappy-20260424-123218.png]]
+![](Pics/swappy-20260424-123218.png)
 
 It avoid privilege mistakes 
 
-![[swappy-20260424-123403.png]]
+![](Pics/swappy-20260424-123403.png)
 
 And also protect sensitive output and prevent data leaks
 
-![[swappy-20260424-123544.png]]
+![](Pics/swappy-20260424-123544.png)
 
 
 ## MAIN DIFFERENCE BETWEEN PIPELINES AND SHELL REDIRECTION
