@@ -30,13 +30,13 @@ This we where the three way handshake comes in
 The three way hand shake consists  of three stages. First the connecting terminal (our attacking machine, in this instance) sends a TCP request to the target server with the SYN flag set. The server then acknowledges this packet with a TCP response containing the SYN flag, as well as the ACK flag. Finally, our terminal completes the handshake by sending a TCP request with the ACK flag set.
 Here is an example of a simple scan on the TCP port using `scanme.nmap.org` as our target.
 
-![[swappy-20260427-142741.png]]
+![](Pictures/swappy-20260427-142741.png)
 
 ### SYN Scans
 
 For `syn scan` we use the switch `-sS`
 
-![[swappy-20260427-144256.png]]
+![](Pictures/swappy-20260427-144256.png)
 
 Here are the advantages for a hacker : 
 - It can be used to bypass older Intrusion Detection systems as they are looking out for a full three way handshake. This is often no longer the case with modern IDS solutions; it is for this reason that SYN scans are still frequently referred to as "stealth" scans.
@@ -50,7 +50,7 @@ There are also disadvantages like:
 
 For the UDP scan we use the switch `-sU` 
 
-![[swappy-20260427-150057.png]]
+![](Pictures/swappy-20260427-150057.png)
 ### ICMP network scanning
 
 For ICMP Scanning we use the switch `-sn` and the target IP or domain. Example : `sudo -sn 172.16.0.0`
@@ -73,7 +73,7 @@ or
 
 The `-sn` switch tells Nmap not to scan any ports -- forcing it to rely primarily on ICMP echo packets (or ARP requests on a local network, if run with sudo or directly as the root user) to identify targets. In addition to the ICMP echo requests, the `-sn` switch will also cause nmap to send a TCP SYN packet to port 443 of the target, as well as a TCP ACK (or TCP SYN if not run as root) packet to port 80 of the target.  
 
-![[swappy-20260427-150437.png]]
+![](Pictures/swappy-20260427-150437.png)
 
 ### OVERVIEW
 
