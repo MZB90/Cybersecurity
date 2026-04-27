@@ -16,24 +16,24 @@ is the place that you have when you open your terminal to write your commands.
 
 simple command in the terminal:
 
-![](Pics/swappy-20260423-130230.png)
+![](Pictures/swappy-20260423-130230.png)
 
 SOME POPULAR AND SIMPLE COMMANDS
 
 - pwd: This command helps you find the directory you are currently in
   
-![](Pics/swappy-20260423-130746.png)
+![](Pictures/swappy-20260423-130746.png)
 
 - cd (Change Directory): this command allows you to move between directories. When used with two dots (. .) it allows you to go back to the previous directory.
   
-![](Pics/swappy-20260423-130832.png)
+![](Pictures/swappy-20260423-130832.png)
 
 - ls (List): this command allows you to list all the elements found in the current directory in which you are in.
 - touch : the primary purpose of this command is to create a new file. You can use it by typing touch and the name of the file you want to create. Example: `touch MZB90`
 - cat : this command allows you to view the contain of a specific file. It can be used as follow: `cat MZB90`
 - history: this command allows you to view the history of your previously used command in the terminal.
   
-![](Pics/swappy-20260423-131804.png)
+![](Pictures/swappy-20260423-131804.png)
 
 - clear: as its name suggests this command allows you to clear you terminal while working on it for better visibility.
 
@@ -46,7 +46,7 @@ FILE PERMISSIONS
 First we have to know that in Linux everything is a file and a folder or directory is just a file that contain other files.
 To be able to see the permissions of files while in the CLI we are going to use the `ls` command with the option `l` to display their permissions`ls -l` then it will display some specific strings each with its meaning of the permissions that file has next to the.
 
-![](Pics/swappy-20260423-132741.png)
+![](Pictures/swappy-20260423-132741.png)
 
 As we can see on the screenshot above we have strings like `d, r, w, x, -` and each of them has a specific permission.
 - r: read permission
@@ -60,7 +60,7 @@ USER, GROUP PERMISSION
 - Then the second set of permission is dedicated to the group
 - And finally the last set of permissions is for all users on the system.
   
-![](Pics/swappy-20260423-134537.png)
+![](Pictures/swappy-20260423-134537.png)
 
 MODIFYING PERMISSIONS
 
@@ -116,7 +116,7 @@ There are many cases in which normal users need elevated access to do stuff. The
 
 When a file has the bit `s` in its permissions that means that it allows the users who run the program to get the root access or file owner's permission as well as execution permission, in this case root. So basically when a user is running the command `passwd` he is running as root.
 
-![](Pics/swappy-20260423-184711.png)
+![](Pictures/swappy-20260423-184711.png)
 
 so whoever runs the `passwd` command is using it as root because of the `s` bit permission.
 
@@ -141,7 +141,7 @@ We have two ways:
 Similar to the set user ID permission bit, there is a set group ID (SGID) permission bit. This bit allows a program to run as if it were a member of that group.
 Example: when we use this command `ls -l /usr/bin/wall` 
 
-![](Pics/swappy-20260423-190902.png)
+![](Pictures/swappy-20260423-190902.png)
 
 Here we can see that the permission bit is in the group permission set.
 
@@ -156,7 +156,7 @@ STICKY BIT
 The sticky bit is a permission setting that can be applied to a directory. When a directory has the sticky bit set, files within that directory can only be deleted or renamed by the file's owner, the directory's owner, or the root user. This is particularly useful for shared directories where multiple users need to create and manage their own files without interfering with others. This concept is a key part of **Unix file permissions sticky bit** management.
 Here is an example:
 
-![](Pics/swappy-20260423-193901.png)
+![](Pictures/swappy-20260423-193901.png)
 
 The `t` indicates that the sticky bit is set.
 
