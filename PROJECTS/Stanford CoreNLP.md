@@ -13,18 +13,18 @@
 
 ## Table of Contents
 
-- [[#Objective]]
-- [[#Why Stanford CoreNLP Was Explored]]
-- [[#Phase 1 - Repository Analysis]]
-- [[#Phase 1 - Compatibility Findings]]
-- [[#Phase 1 - Architecture Decision]]
-- [[#Phase 2 - Standalone POC Implementation]]
-- [[#Phase 2 - Web Integration Implementation]]
-- [[#Testing Process and Results]]
-- [[#NLP Quality Evaluation]]
-- [[#Challenges Encountered]]
-- [[#Lessons Learned]]
-- [[#Future Recommendations for Ajirika]]
+- Objective
+- Why Stanford CoreNLP Was Explored
+- Phase 1 - Repository Analysis
+- Phase 1 - Compatibility Findings
+- Phase 1 - Architecture Decision
+- Phase 2 - Standalone POC Implementation
+- Phase 2 - Web Integration Implementation
+- Testing Process and Results
+- NLP Quality Evaluation
+- Challenges Encountered
+- Lessons Learned
+- Future Recommendations for Ajirika
 
 ---
 
