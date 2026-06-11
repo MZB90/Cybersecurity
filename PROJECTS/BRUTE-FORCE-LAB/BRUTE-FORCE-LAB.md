@@ -1,3 +1,5 @@
+# BRUTE FORCE LAB
+
 This project is a local educational cybersecurity lab demonstrating
 how weak authentication systems can be abused through repeated
 credential guessing attempts.
