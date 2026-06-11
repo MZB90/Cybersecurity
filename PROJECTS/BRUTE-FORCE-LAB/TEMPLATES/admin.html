@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .log-box {
+            background: #0b0f14;
+            color: #00ff88;
+            padding: 15px;
+            border-radius: 10px;
+            max-height: 450px;
+            overflow-y: auto;
+            font-family: monospace;
+            margin-top: 10px;
+        }
+
+        .log-line {
+            padding: 8px;
+            border-bottom: 1px solid #222;
+            white-space: pre-wrap;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <div class="sidebar">
+        <h2>Cyber Lab</h2>
+
+        <ul>
+            <li>Dashboard</li>
+            <li>Users</li>
+            <li>Logs</li>
+            <li>Security</li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+
+        <div class="topbar">
+            <h1>Admin Dashboard</h1>
+            <p>Welcome back, {{ user }}</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h2>Login Attempts</h2>
+                <p>127</p>
+            </div>
+
+            <div class="card">
+                <h2>Failed Logins</h2>
+                <p>23</p>
+            </div>
+
+            <div class="card">
+                <h2>Blocked Attacks</h2>
+                <p>8</p>
+            </div>
+
+        </div>
+
+        <!-- LIVE LOG PANEL -->
+        <div class="panel">
+
+            <h2>Recent Security Events (Live)</h2>
+
+            <div id="logBox" class="log-box"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- LIVE SCRIPT -->
+<script>
+
+async function loadLogs() {
+
+    try {
+        const res = await fetch('/logs');
+        const data = await res.json();
+
+        const logBox = document.getElementById("logBox");
+
+        logBox.innerHTML = "";
+
+        data.logs.forEach(line => {
+
+            const div = document.createElement("div");
+            div.className = "log-line";
+            div.textContent = line;
+
+            logBox.appendChild(div);
+        });
+
+    } catch (err) {
+        console.log("Error loading logs:", err);
+    }
+}
+
+// refresh every 2 seconds
+setInterval(loadLogs, 2000);
+loadLogs();
+
+</script>
+
+</body>
+</html>
