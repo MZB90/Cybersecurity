@@ -1,0 +1,81 @@
+
+====================================================
+ATTEMPT #1
+TIME: 2026-06-11 21:25:48
+USERNAME: admin
+STATUS: FAILED
+IP: 127.0.0.1
+USER-AGENT: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+====================================================
+
+====================================================
+ATTEMPT #2
+TIME: 2026-06-11 21:25:53
+USERNAME: admin
+STATUS: FAILED
+IP: 127.0.0.1
+USER-AGENT: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+====================================================
+
+====================================================
+ATTEMPT #3
+TIME: 2026-06-11 21:26:00
+USERNAME: 12345
+STATUS: FAILED
+IP: 127.0.0.1
+USER-AGENT: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+====================================================
+
+====================================================
+ATTEMPT #4
+TIME: 2026-06-11 21:26:06
+USERNAME: kearlhw
+STATUS: FAILED
+IP: 127.0.0.1
+USER-AGENT: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+====================================================
+
+====================================================
+ATTEMPT #1
+TIME: 2026-06-11 21:58:27
+USERNAME: werhjk.
+STATUS: FAILED
+IP: 127.0.0.1
+USER-AGENT: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+====================================================
+
+====================================================
+ATTEMPT #2
+TIME: 2026-06-11 21:58:36
+USERNAME: admin
+STATUS: FAILED
+IP: 127.0.0.1
+USER-AGENT: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+====================================================
+
+====================================================
+ATTEMPT #3
+TIME: 2026-06-11 21:58:42
+USERNAME: 12345
+STATUS: FAILED
+IP: 127.0.0.1
+USER-AGENT: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+====================================================
+
+====================================================
+ATTEMPT #4
+TIME: 2026-06-11 21:58:48
+USERNAME: 12345
+STATUS: FAILED
+IP: 127.0.0.1
+USER-AGENT: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+====================================================
+
+====================================================
+ATTEMPT #5
+TIME: 2026-06-11 21:58:57
+USERNAME: 123df
+STATUS: FAILED
+IP: 127.0.0.1
+USER-AGENT: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+====================================================
