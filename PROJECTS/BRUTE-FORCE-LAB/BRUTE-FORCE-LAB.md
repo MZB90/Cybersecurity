@@ -35,7 +35,7 @@ Here we are going to use for our python environment we will use:
 - `python3-venv`
 So to be able to get them while we are using KALI LINUX as our Operating System we are going to check if we already have them in our OS because KALI LINUX normally comes with `python3` already installed, for this we are going to open our terminal and type `python3` and that should give us an output.
 
-![[pic1.png]]
+![](PICTURES/pic1.png)
 
 
 In case where it's not pre-installed you can always download them with the command 
