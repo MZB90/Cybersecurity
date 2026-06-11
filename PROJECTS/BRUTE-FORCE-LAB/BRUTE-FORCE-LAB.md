@@ -49,7 +49,7 @@ Here is how to check it in the terminal:
 Here is how to install it from your terminal:
 `sudo apt install hydra`
 
-![[pic2.png]]
+![](PICTURES/pic2.png)
 
 ## CREATION OF THE WEBSITE
 Now that we have installed everything we are going to be using let now start creating our victim website that will run locally.
@@ -60,7 +60,7 @@ Here is how to install it from the terminal:
 
 After its installation now we can launch it and start writing our website's code
 
-![[pic3.png]]
+![](PICTURES/pic3.png)
 
 
 ## INITIALIZING THE DATABASE
@@ -70,7 +70,7 @@ When we are sure that we are in the right directory now we can initialize our da
 In our case here is how the command looks like: `python3 init_db.py`
 And here is how the output should look like:
 
-![[pic4.png]]
+![](PICTURES/pic4.png)
 
 
 
@@ -83,33 +83,32 @@ Now it time to run our website locally so that we can start our attack simulatio
 For this step we are going to use the same command which is `python3` as we did for the initialization of the database but here instead of the database name we are going to put `app.py`
 Here is how our full command looks like : `python3 app.py`
 
-![[pic5.png]]
+![](PICTURES/pic5.png)
 
 As we can see on our screenshot after running the command we can see that the servers is now locally running on `http://127.0.0.1:5000`
 
 And when we go to `http://127.0.0.1:5000` in our browser we can now see our admin login page running as shown on the picture bellow.
 
-![[pic6.png]]
+![](PICTURES/pic6.png)
 
 ## LOGGING TO THE ADMIN PAGE 
 For the admin to be able to login to the admin panel we set the admin user name to be `admin` and his password to be `Admin123!` directly in the website code as we can see on the screenshot bellow:
 
-![[pic7.png]]
+![](PICTURES/pic7.png)
 
 
 After login in here is how our admin panel looks like:
 
 **ATTENTION: REMEMBER THIS WEBSITE IS JUST FOR THE PROJECT, JUST FOR PRACTICE THAT'S WHY I DIDN'T PUT MUCH ATTENTION ON THE STYLING AND DETAILS.** 
 
-![[pic8.png]]
-
+![](PICTURES/pic8.png)
 
 And also i implemented a basic functionality like the ability to logout and some some security functionalities like in case a password or username is incorrect to give a maximum number of attempts that is 5 and a timeout to wait until you can try again to login which is 30 seconds as you can see in the picture bellow:
 
-![[pic9.png]]
+![](PICTURES/pic9.png)
 
 
-![[pic10.png]]
+![](PICTURES/pic10.png)
 
 ## LET'S ATTACK
 So now here comes the moment we are going to conduct our attack on the website and see if we can gain access to the admin page.
@@ -149,11 +148,11 @@ Here is the explanation of that command what it does, how it works and the meani
 
 So basically this command read usernames from `usernames.txt`, read passwords from `passwords.txt`, send POST requests to `/login`, replace placeholders with credential combinations, detect failures using `invalid`, and the report attempts that appear successful.
 
-![[pic11.png]]
+![](PICTURES/pic11.png)
 
-![[pic12.png]]
+![](PICTURES/pic12.png)
 
-![[pic13.png]]
+![](PICTURES/pic13.png)
 
 And now as we can see we were able to get the correct combination of username and password that allow us to connect to the admin panel.
 
@@ -191,25 +190,24 @@ Now let get into it.
 
 Here the first thing we are going to do is to look for the function that deals with the logging in our website and that function can be found in the `app.py` file of the website. 
 
-![[pic14.png]]
+![](PICTURES/pic14.png)
 
 After we found our function the next step will be to replace it with a better and more secure one. In our case here is the function that I used to replace our previous function. 
 
-![[pic15.png]]
-
+![](PICTURES/pic15.png)
 
 Here with the new function we can see that our new logging can now request for the IP of the device that tries to connect, a timestamp showing when the login happens in real time, the status of the login if it succeed or failed, the user agent either a browser or an automated tool, and an attempt counter which allows to track how many time a device attempted to log in.
 
 Now let launch an attack again and see if it will work. We should be able to see in the `attempts.log` file of our website the different log in attempts with the time, username, status, IP, and the use-agent(either browser or automation tool in our case `hydra`).
 
-![[pic16.png]]
+![](PICTURES/pic16.png)
 
-![[pic17.png]]
+![](PICTURES/pic17.png)
 
 After launching the attack we can see that the we were still able to get the login credentials for the admin page, the purpose of the changes we have made is not yet to stop an attack but to be able to recognize one once we check the login attempts.
 Here is now the output in our `attempts.log` file.
 
-![[pic18.png]]
+![](PICTURES/pic18.png)
 
 As we can see in our file the login attempts that occurs and their statuses and only one of them has as status `SUCCESS` meaning the we were able to get the credentials wanted. We can also see that we were able to detect that the logins were attempted by an automated tool called `hydra`. 
 
@@ -221,22 +219,22 @@ Now here we don't want to have to go to the `attempts.log` file to be able to se
 
 Here we need to look for the function that deals with the admin panel and in our case that function is `admin()` that's located in the `aap.py` file and modify it so that it can allow us to see the different logins once the admin in logged in.
 
-![[pic19.png]]
+![](PICTURES/pic19.png)
 
 Here is our new function that will deal with the admin panel.
 
-![[pic20.png]]
+![](PICTURES/pic20.png)
 
 
 Now after adding it we also need to modify our website's style so that it can be able to properly show the dashboard.
 
 Here is how our admin panel used to be
 
-![[pic21.png]]
+![](PICTURES/pic21.png)
 
 And here is how it looks now 
 
-![[pic22.png]]
+![](PICTURES/pic22.png)
 
 And as we can see on this second picture all the logs are appearing at the admin panel once he is logged in.
 AS we said this will allow the admin to be able to see in real time the different login attempts and make suitable and fast decisions.
@@ -254,11 +252,11 @@ As we can see on the bellow pictures after too many attempts to log in the IP of
 
 As we can see in our logs the attacker tried to log in multiple times with the wrong username or password:
 
-![[pic24.png]]
+![](PICTURES/pic23.png)
 
 As we can see on this screenshot the account was locked due to multiple failed attempts to log in:
 
-![[pic23.png]]
+![](PICTURES/pic24.png)
 
 
 
@@ -270,23 +268,23 @@ In our code again we are going to add or replace part of it to make it more secu
 
 The above part added to our code gives a limit attempts and temporary block the IP of a device after trying to log in multiple times.
 
-![[pic25.png]]
+![](PICTURES/pic25.png)
 
 The above piece of code added verifies if an IP has been locked:
 
-![[pic26.png]]
+![](PICTURES/pic26.png)
 
 The above piece of code added count the number of log in attempts from a specific IP:
 
-![[pic27.png]]
+![](PICTURES/pic27.png)
 
 The above piece of code handle when a user successfully log in:
 
-![[pic28.png]]
+![](PICTURES/pic28.png)
 
 And finally here after testing we can see that the user has been blocked due to multiple log in attempts:
 
-![[pic29.png]]
+![](PICTURES/pic29.png)
 
 
 
